@@ -4,12 +4,6 @@ from sqlalchemy import create_engine
 import logging
 import time
 
-logging.basicConfig(
-    filename="logs/ingestion_db.log",
-    level=logging.DEBUG,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    filemode="a"
-)
 
 # Creates a SQLAlchemy engine that connects to an SQLite database file called inventory.db.
 # If the file does not exist, SQLite will automatically create it.
@@ -32,5 +26,11 @@ def load_raw_data():
     logging.info('-----Ingestion Complete-----')
     logging.info(f'Total Time Taken: {total_time} minutes')
 
-if __name__=='__main__':
+if __name__ == '__main__':
+    logging.basicConfig(
+        filename="logs/ingestion_db.log",
+        level=logging.DEBUG,
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        filemode="a"
+    )
     load_raw_data()
